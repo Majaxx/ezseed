@@ -69,5 +69,31 @@ Pour plus d'options regardez l'aide `ezseed -h`
 - rtorrent a un souci avec les noms en majuscules/minuscules
 - rtorrent a un souci avec les caractères spéciaux de certains torrents et peut mener à un disfonctionnement d'ezseed
 - rtorrent nécessite une configuration supplémentaire d'AutoTools pour déplacer les téléchargements:
+- 
+
+## Bonus 
+Synchronisation des fichiers vers votre NAS
+
+Tuto : http://www.legeektechno.fr/serveurs/script-de-synchronisation-de-seedbox-version-2.html
+
+Ensuite génére une clé RSA
+```
+ssh-keygen -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@monippublique
+cd scripts
+nano setEnv.sh
+```
+Remplacer la valeur LOGS_DIR par 
+LOGS_DIR=/var/log/rsync
+
+en root
+```
+mkdir -p /var/log/rsync
+chown -R /var/log/rsync
+chgrp -R /var/log/rsync
+```
+Lancer vos synchronisation maintenant ou gerer les via crontab
+
+
 
 ![](https://camo.githubusercontent.com/a278375b20071e41ed233b5f6b1e8936222ae0bf/687474703a2f2f7777772e7a75706d6167652e65752f692f687052455238336376472e706e67)
